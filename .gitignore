@@ -1,0 +1,7 @@
+*.apk
+*.aab
+*.p12
+*.jks
+*.keystore
+*.env
+local.properties
