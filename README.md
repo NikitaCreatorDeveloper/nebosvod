@@ -38,7 +38,7 @@
   <tr>
     <td align="center"><img src="assets/screenshots/screen-main.jpg" width="260" alt="Главный экран Небосвода"><br><sub>Главный экран</sub></td>
     <td align="center"><img src="assets/screenshots/screen-forecast.jpg" width="260" alt="Почасовой и десятидневный прогноз"><br><sub>Почасовой и 10-дневный прогноз</sub></td>
-    <td align="center"><img src="assets/screenshots/screen-offline.jpg" width="260" alt="Сохранённый прогноз без сети"><br><sub>Сохранённый прогноз</sub></td>
+    <td align="center"><img src="assets/screenshots/screen-offline.jpg" width="260" alt="Дополнительные показатели погоды"><br><sub>Дополнительные показатели</sub></td>
   </tr>
 </table>
 
