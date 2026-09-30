@@ -1,0 +1,52 @@
+Nebosvod Portfolio License 1.0
+
+Copyright (c) 2026 NikitaCreatorDeveloper.
+All rights reserved except for the permissions expressly granted below.
+
+1. Permitted use
+
+Permission is granted, free of charge, to download, install and use unmodified
+official binary releases of Nebosvod published by NikitaCreatorDeveloper from
+the official GitHub repository and its GitHub Releases page for personal,
+educational, portfolio-review and other non-commercial purposes.
+
+Permission is also granted to link to the official repository and official
+release pages.
+
+2. Restrictions
+
+Unless separate written permission is granted by the copyright holder, this
+license does not grant permission to:
+
+- redistribute or mirror the APK or other release artifacts;
+- sell, sublicense, rent, monetize or commercially exploit Nebosvod;
+- modify, repackage, impersonate, or publish a derivative build as an official
+  Nebosvod release;
+- reuse the Nebosvod name, logo or artwork in a way that suggests endorsement;
+- use unpublished source code, signing keys or other private project material.
+
+Nothing in this license restricts rights that applicable law gives you despite
+these terms, including mandatory exceptions that cannot be waived by contract.
+
+3. Third-party material and services
+
+Third-party libraries, data, map tiles, radar imagery and service APIs are not
+relicensed by this license. They remain governed by their own licenses, terms,
+attribution requirements, quotas and usage policies. See THIRD_PARTY_NOTICES.md
+and SOURCES.md.
+
+The official portfolio release is intended for non-commercial use. Availability
+of third-party services is not guaranteed.
+
+4. No warranty
+
+THE SOFTWARE AND RELEASE ARTIFACTS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. TO THE
+MAXIMUM EXTENT PERMITTED BY LAW, THE COPYRIGHT HOLDER IS NOT LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM THE SOFTWARE OR ITS USE.
+
+5. Source availability
+
+Public distribution of an APK or documentation does not grant an open-source
+license. The Kotlin source code is not included in this repository.
