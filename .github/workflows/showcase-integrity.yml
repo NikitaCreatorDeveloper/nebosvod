@@ -1,0 +1,50 @@
+name: Showcase integrity
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify public showcase
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          required=(
+            README.md
+            LICENSE
+            INSTALLATION.md
+            TESTING.md
+            PRIVACY.md
+            THIRD_PARTY_NOTICES.md
+            DISTRIBUTION.md
+            RELEASE-NOTES.md
+            assets/icon.png
+            assets/screenshots/screen-main.jpg
+            assets/screenshots/screen-forecast.jpg
+            assets/screenshots/screen-offline.jpg
+          )
+
+          for path in "${required[@]}"; do
+            test -f "$path" || { echo "Missing required file: $path"; exit 1; }
+          done
+
+          grep -Fq 'app.nebo.weather.public' README.md
+          grep -Fq '02d685092ea0dddce113281c6f9951ca2a313c839d11008644820a7adf90a160' README.md
+          grep -Fq 'assets/screenshots/screen-main.jpg' README.md
+          grep -Fq 'Nebosvod Portfolio License' LICENSE
+          grep -Fq '31 PASS / 0 FAIL' TESTING.md
+
+          echo "SHOWCASE INTEGRITY — PASS"
