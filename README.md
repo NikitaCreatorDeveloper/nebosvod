@@ -82,7 +82,7 @@ Google Weather и OpenWeather не используются публичным r
 | Emulator runtime checks | **11 PASS** |
 | Debug build / release compile | **PASS** |
 
-Полный краткий отчёт и ограничения: [TESTING.md](TESTING.md). Исходный Kotlin-код намеренно не опубликован, поэтому публичный GitHub workflow проверяет целостность витриины, а не изображает повторный запуск закрытого test suite.
+Полный краткий отчёт и ограничения: [TESTING.md](TESTING.md). Исходный Kotlin-код намеренно не опубликован, поэтому публичный GitHub workflow проверяет целостность витрины, а не изображает повторный запуск закрытого test suite.
 
 ## Скачать и проверить
 
