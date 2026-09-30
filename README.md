@@ -1,45 +1,115 @@
-# Небосвод · PUBLIC 1.0.0-rc.3
+<p align="center">
+  <img src="assets/icon.png" width="112" alt="Небосвод">
+</p>
 
-Предрелиз Android-приложения на Kotlin / Compose. Подписанный APK: [GitHub Releases](https://github.com/NikitaCreatorDeveloper/nebosvod/releases/tag/v1.0.0-rc.3).
-Версия `1.0.0-rc.3`, versionCode `102`. Репозиторий содержит документацию и публичные release artifacts, без Kotlin source.
+<h1 align="center">Небосвод</h1>
 
-| Данные | PUBLIC provider |
+<p align="center">
+  Нативное Android-приложение погоды на Kotlin и Jetpack Compose.<br>
+  Портфолио-проект: прогноз, офлайн-кэш, виджет, качество воздуха и карта осадков без пользовательских API-ключей.
+</p>
+
+<p align="center">
+  <a href="https://github.com/NikitaCreatorDeveloper/nebosvod/releases/download/v1.0.0-rc.3/Nebosvod-1.0.0-rc.3.apk"><strong>Скачать подписанный APK</strong></a>
+  ·
+  <a href="https://github.com/NikitaCreatorDeveloper/nebosvod/releases/tag/v1.0.0-rc.3">Релиз</a>
+  ·
+  <a href="INSTALLATION.md">Установка и проверка</a>
+  ·
+  <a href="TESTING.md">Тестирование</a>
+</p>
+
+> **Статус:** функционально завершённый portfolio snapshot. Активная разработка новых функций остановлена; возможны только существенные исправления совместимости, безопасности и распространения.
+
+## Возможности
+
+- текущая погода, «ощущается как», температура, ветер, влажность и осадки;
+- почасовой прогноз и прогноз на 10 дней;
+- УФ-индекс, ИКВ, восход/закат и дополнительные показатели;
+- сохранённый прогноз после закрытия приложения и перезапуска процесса;
+- настраиваемый Android-виджет;
+- города, единицы измерения, светлая/тёмная тема;
+- нативная карта: OpenStreetMap + наблюдаемый радар осадков RainViewer;
+- работа без личных API-ключей и без собственного сервера приложения.
+
+## Интерфейс
+
+<table>
+  <tr>
+    <td align="center"><img src="assets/screenshots/screen-main.jpg" width="260" alt="Главный экран Небосвода"><br><sub>Главный экран</sub></td>
+    <td align="center"><img src="assets/screenshots/screen-forecast.jpg" width="260" alt="Почасовой и десятидневный прогноз"><br><sub>Почасовой и 10-дневный прогноз</sub></td>
+    <td align="center"><img src="assets/screenshots/screen-offline.jpg" width="260" alt="Сохранённый прогноз без сети"><br><sub>Сохранённый прогноз</sub></td>
+  </tr>
+</table>
+
+<sub>Галерея показывает provider-neutral части интерфейса той же линии приложения. В публичной сборке <code>1.0.0-rc.3</code> сетевые источники — Open-Meteo, RainViewer и OpenStreetMap.</sub>
+
+## Источники данных
+
+| Функция | Публичный источник |
 |---|---|
-| Прогноз, текущая погода, часы/дни | Open-Meteo Forecast API, automatic Best Match |
-| ИКВ | Open-Meteo Air Quality / CAMS ENSEMBLE, прежняя шкала 1–5 |
+| Текущая погода, часы и дни | Open-Meteo Forecast API |
+| Качество воздуха | Open-Meteo Air Quality / CAMS ENSEMBLE |
 | Географическая подложка | OpenStreetMap |
 | Осадки на карте | RainViewer Weather Maps API, последний доступный прошедший радарный кадр |
 
-API-ключи и регистрация не нужны. Google Weather и OpenWeather не используются PUBLIC runtime.
-Явное согласованное отличие от личной версии: удалены картографические слои облачности,
-температуры и ветра; слой осадков заменён радаром RainViewer. Показатели в прогнозе,
-карточки, hourly/daily, offline, виджет, ИКВ, города, настройки и темы сохранены.
-Дневная/ночная вероятность осадков = максимум почасовых вероятностей периода (APPROVED).
+Google Weather и OpenWeather не используются публичным runtime. RainViewer не гарантирует глобальное радарное покрытие: отсутствие кадра не означает отсутствие осадков. Nowcast в этой версии не заявляется.
 
-RainViewer имеет ограниченное покрытие: отсутствие радарных данных не означает отсутствие
-осадков. Внизу карты показано время формирования кадра. Затемнение отмечает отсутствие
-покрытия. Тайлы доступны до zoom 7; управление масштабом карты до 12 сохранено за счёт
-увеличения настоящего родительского тайла, без новой детализации. Nowcast отсутствует.
-Публичный RainViewer API предназначен для личного, образовательного и небольшого
-общественного использования; доступность не гарантирована.
+## Технологии
 
-PUBLIC application ID: `app.nebo.weather.public`; debug: `app.nebo.weather.public.preview`.
-Личные `app.nebo.weather` / `app.nebo.weather.preview` не обновляются этим кандидатом.
-Личный исходный baseline сохранён в теге `nebo-before-open-meteo-20260925`;
-дополнительный снимок до RainViewer находится локально в `out/before-rainviewer-source.zip`.
-Песочницы приложений раздельны: автоматического копирования личных данных в PUBLIC нет.
-Схемы локальных данных и сроки погодного кэша не изменены.
+- Kotlin, Jetpack Compose и Material 3;
+- ViewModel + StateFlow;
+- Kotlin Coroutines;
+- OkHttp;
+- Preferences DataStore;
+- WorkManager;
+- RemoteViews для виджета;
+- нативный рендер карты без WebView.
 
-Сборка: `testDebugUnitTest`, `lintDebug`, `assembleDebug`, `compileReleaseKotlin`.
-Статические проверки: `tools/verify-source.py`, `tools/verify-provider-migration.py`,
-`tools/audit-public-providers.py`. Не используйте build-and-install для проверки на телефоне.
-`PUBLISH-GITHUB.cmd` — отдельная ручная публикация документации и подписанных артефактов;
-публикация использует отдельный docs-only репозиторий. Это prerelease, не стабильный выпуск 1.0.
+Подробности: [архитектура](ARCHITECTURE-RU.md) и [аудит публичных провайдеров](PUBLIC-MAP-PROVIDER-AUDIT.md).
 
-Документы: [Privacy Policy](PRIVACY.md), [источники](SOURCES.md),
-[notices](THIRD_PARTY_NOTICES.md), [аудит карты](PUBLIC-MAP-PROVIDER-AUDIT.md),
-[миграция](OPEN-METEO-MIGRATION.md).
+## Проверено
 
-Weather data by [Open-Meteo](https://open-meteo.com/) · Air quality: CAMS ENSEMBLE ·
-Weather data by [RainViewer](https://www.rainviewer.com/) ·
-© [OpenStreetMap contributors](https://www.openstreetmap.org/copyright).
+Финальный кандидат проходил локальную проверку исходников, APK и Android runtime:
+
+| Проверка | Результат |
+|---|---:|
+| JUnit | **31 PASS / 0 FAIL** |
+| Android Lint | **0 errors / 41 warnings** |
+| Source/static checks | **304 PASS** |
+| Regression checks | **68 PASS** |
+| PUBLIC source/config/APK checks | **359 PASS** |
+| Emulator runtime checks | **11 PASS** |
+| Debug build / release compile | **PASS** |
+
+Полный краткий отчёт и ограничения: [TESTING.md](TESTING.md). Исходный Kotlin-код намеренно не опубликован, поэтому публичный GitHub workflow проверяет целостность витриины, а не изображает повторный запуск закрытого test suite.
+
+## Скачать и проверить
+
+Текущий публичный артефакт: **Небосвод 1.0.0-rc.3** (<code>versionCode 102</code>, package <code>app.nebo.weather.public</code>).
+
+- APK: [Nebosvod-1.0.0-rc.3.apk](https://github.com/NikitaCreatorDeveloper/nebosvod/releases/download/v1.0.0-rc.3/Nebosvod-1.0.0-rc.3.apk)
+- SHA-256: <code>02d685092ea0dddce113281c6f9951ca2a313c839d11008644820a7adf90a160</code>
+- релиз содержит также <code>SHA256SUMS.txt</code> и публичный <code>publisher-certificate.pem</code>.
+
+APK **подписан**. Подпись Android и репутация Google Play Protect — разные механизмы: при прямой установке с GitHub Play Protect всё ещё может показать предупреждение о ранее не проверенном разработчике. Текущий статус и правильный путь регистрации описаны в [INSTALLATION.md](INSTALLATION.md). Отключать Play Protect для распространения проекта не требуется и не рекомендуется.
+
+## Privacy
+
+У приложения нет собственного сервера, рекламы, аналитики и автоматической отправки crash-отчётов. Запросы идут напрямую к Open-Meteo, RainViewer, OpenStreetMap и системному Android Geocoder. Подробно: [PRIVACY.md](PRIVACY.md).
+
+## Лицензии и область распространения
+
+Собственное приложение, документация и официальные бинарные релизы регулируются [Nebosvod Portfolio License](LICENSE). Разрешено скачивание, установка и использование официального неизменённого APK для личного, учебного и иного некоммерческого ознакомления с проектом.
+
+Сторонние библиотеки и погодные/картографические данные остаются под собственными лицензиями и условиями: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Эта публичная сборка позиционируется как **некоммерческий portfolio/showcase release**, что соответствует выбранным бесплатным публичным источникам данных.
+
+## Репозиторий
+
+Это намеренно **docs + distribution repository**. Kotlin source, AAB, приватный signing key, пароли и локальные настройки здесь не публикуются.
+
+Дополнительные документы: [начало работы](GETTING-STARTED.md) · [источники](SOURCES.md) · [распространение](DISTRIBUTION.md) · [release notes](RELEASE-NOTES.md).
+
+---
+
+Weather data by [Open-Meteo](https://open-meteo.com/) · Air quality: CAMS ENSEMBLE · Weather data by [RainViewer](https://www.rainviewer.com/) · © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright).
